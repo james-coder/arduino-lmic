@@ -192,6 +192,9 @@ void setup() {
     
     // Disable link check validation
     LMIC_setLinkCheckMode(0);
+    
+    // set ADR mode (if mobile turn off) - Adaptive Data Rate
+    LMIC_setAdrMode(0);
 
     // TTN uses SF9 for its RX2 window.
     LMIC.dn2Dr = DR_SF9;
