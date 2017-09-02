@@ -181,6 +181,15 @@ void setup() {
        LMIC_disableChannel(channel);
     }    
     
+    // Enable/disable link check validation.
+    // LMIC sets the ADRACKREQ bit in UP frames if there were no DN frames
+    // for a while. It expects the network to provide a DN message to prove
+    // connectivity with a span of UP frames. If this no such prove is coming
+    // then the datarate is lowered and a LINK_DEAD event is generated.
+    // This mode can be disabled and no connectivity prove (ADRACKREQ) is requested
+    // nor is the datarate changed.
+    // This must be called only if a session is established (e.g. after EV_JOINED)
+    
     // Disable link check validation
     LMIC_setLinkCheckMode(0);
 
