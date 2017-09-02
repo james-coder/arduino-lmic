@@ -60,13 +60,14 @@ static osjob_t sendjob;
 // cycle limitations).
 const unsigned TX_INTERVAL = 60;
 
-// Pin mapping
+// Pin mapping for LinkSprite
 const lmic_pinmap lmic_pins = {
-    .nss = 6,
-    .rxtx = LMIC_UNUSED_PIN,
-    .rst = 5,
-    .dio = {2, 3, 4},
+    .nss = 10, // slave select (SPI)
+    .rxtx = LMIC_UNUSED_PIN, // antenna switch, typically unused
+    .rst = 5, // reset
+    .dio = {3, 2, 4}, // pins for DIO0 / DIO1 / DIO2
 };
+// Also needed pins: MOSI to MOSI (11), MISO to MISO (12), SCK to SCK (13) (standard Arduino SPI pins)
 
 void onEvent (ev_t ev) {
     Serial.print(os_getTime());
