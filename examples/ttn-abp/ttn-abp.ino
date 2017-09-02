@@ -201,8 +201,8 @@ void setup() {
     // set ADR mode (if mobile turn off) - Adaptive Data Rate
     LMIC_setAdrMode(0);
 
-    // TTN uses SF9 for its RX2 window.
-    //LMIC.dn2Dr = DR_SF9;
+    // TTN uses SF12 for its RX2 window for US915
+    LMIC.dn2Dr = DR_SF12;
 
     // Set data rate and transmit power for uplink (note: txpow seems to be ignored by the library)
     LMIC_setDrTxpow(DR_SF10,14);
